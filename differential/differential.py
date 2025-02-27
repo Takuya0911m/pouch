@@ -14,36 +14,41 @@ print("出力先:", output)
 print("Confirm? y/n")
 A = input()
 
-assert A == "y", "Try Again"
+if A == "y" or A == "Y":
+    image_gray = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
+    # ガウシアンフィルターを適用してノイズを削除
+    blurred = cv2.GaussianBlur(image_gray, (5, 5), 0)
+    # ラプラシアンフィルタ
+    laplacian = cv2.Laplacian(blurred, cv2.CV_8U, ksize=5)
+    # 絶対値を取得
+    laplacian = cv2.convertScaleAbs(laplacian)
+    # 閾値処理を行う
+    retval, thresholded = cv2.threshold(laplacian, 127, 255, cv2.THRESH_BINARY_INV)
+    #print(retval)
 
-image_gray = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
-# ガウシアンフィルターを適用してノイズを削除
-blurred = cv2.GaussianBlur(image_gray, (5, 5), 0)
-# ラプラシアンフィルタ
-laplacian = cv2.Laplacian(blurred, cv2.CV_8U, ksize=5)
-# 絶対値を取得
-laplacian = cv2.convertScaleAbs(laplacian)
-# 閾値処理を行う
-retval, thresholded = cv2.threshold(laplacian, 127, 255, cv2.THRESH_BINARY_INV)
-#print(retval)
+    image = cv2.imread(image)
+    #メディアンフィルタ
+    median = cv2.medianBlur(image, 15) 
 
-image = cv2.imread(image)
-#メディアンフィルタ
-median = cv2.medianBlur(image, 15) 
+    # 画像を結合
+    thresholded = cv2.cvtColor(thresholded, cv2.COLOR_GRAY2BGR)
+    blended = cv2.addWeighted(src1=thresholded, alpha=0.2, src2=median, beta=0.8, gamma=0)
 
-# 画像を結合
-thresholded = cv2.cvtColor(thresholded, cv2.COLOR_GRAY2BGR)
-blended = cv2.addWeighted(src1=thresholded, alpha=0.2, src2=median, beta=0.8, gamma=0)
+    # 画像の確認
+    print("")
+    print("変換後の画像を確認してください")
+    plt.imshow(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB))
+    plt.show()
 
-plt.imshow(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB))
-plt.show()
+    print("Confirm? y/n")
+    B = input()
 
-print("Confirm? y/n")
-B = input()
+    if B == "y" or B == "Y":
+        #画像の出力
+        cv2.imwrite(output, blended)
+        print('output.')
 
-if B == "y":
-    #画像の出力
-    cv2.imwrite(output, blended)
-    print('output.')
+    print("Finish")
 
-print("Finish")
+else:
+    print("Try Again")
