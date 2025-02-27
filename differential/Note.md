@@ -3,7 +3,7 @@
 入力された画像を、ラプラシアンフィルタやメディアンフィルタで処理し、イラスト風の画像に変換する。
 
 ## 開発の経緯・ストーリー
-ラムダ技術部さんの動画（https://youtu.be/GZMJuuOKPrc?si=cgvVjBiMBlavYCbT）を参考に、大学の講義で習った画像処理を用いてPythonで実装してみようと思い、制作した。
+ラムダ技術部さんの動画（https://youtu.be/GZMJuuOKPrc?si=cgvVjBiMBlavYCbT ）を参考に、大学の講義で習った画像処理を用いてPythonで実装してみようと思い、制作した。
 
 ## プログラム
 ### test-laplacian.ipynb
