@@ -21,8 +21,9 @@ Jupyter Notebookの形式で仮実装。プログラムの流れを確認し、�
 - 20250111_122040.jpg → output2.jpg
 - 20241123_115226.jpg → darumado.jpg
 
-## 今後の展望
-- 使いやすいユーザーインターフェイスを実装する
+## (追記)ユーザーインターフェイスを実装
+### differential_with_GUI.py
+- streamlitを利用してユーザーインターフェイスを実装した。
 
 ## 参考文献
 - https://www.youtube.com/watch?v=GZMJuuOKPrc
@@ -31,3 +32,4 @@ Jupyter Notebookの形式で仮実装。プログラムの流れを確認し、�
 - https://pystyle.info/opencv-median-filter/
 - https://www.kikagaku.co.jp/kikagaku-blog/python-opencv/
 - https://udemy.benesse.co.jp/development/python-work/opencv.html
+- https://qiita.com/kins/items/52a52c2c000e364ab452
