@@ -5,7 +5,7 @@ from io import BytesIO
 
 # --- ページ設定 ---
 st.set_page_config(page_title="画像加工ツール", layout="wide")
-st.title('🖼️ 画像加工ツール (テンプレート機能付)')
+st.title('🖼️ 画像加工ツール')
 
 # --- 処理用関数 ---
 
@@ -52,7 +52,7 @@ if uploaded_file is not None:
     
     # 2. 変換ON/OFF設定
     st.sidebar.subheader("2. 特殊効果")
-    do_transform = st.sidebar.checkbox('エッジ抽出風変換を適用する', value=True)
+    do_transform = st.sidebar.checkbox('イラスト風変換を適用する', value=True)
     
     output_name = st.sidebar.text_input('保存ファイル名', value="processed_image.png")
 
